@@ -8,16 +8,14 @@
 <body>
     <h1>Transcrição em Tempo Real</h1>
     <button id="start">Iniciar Gravação</button>
-    <button id="togglePip">Ativar Legenda Flutuante</button>
-    <p id="transcription"></p>
-
-    <video id="pipVideo" style="display:none;" muted></video>
+    <button id="openPopup">Abrir Legenda em Janela Flutuante</button>
+    <p id="transcription">Transcrição aparecerá aqui...</p>
 
     <script>
         const startButton = document.getElementById('start');
-        const pipButton = document.getElementById('togglePip');
+        const openPopupButton = document.getElementById('openPopup');
         const transcriptionElement = document.getElementById('transcription');
-        const pipVideo = document.getElementById('pipVideo');
+        let popupWindow;
 
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.lang = 'pt-BR';
@@ -30,6 +28,11 @@
                 transcript += event.results[i][0].transcript;
             }
             transcriptionElement.textContent = transcript;
+
+            // Envia a transcrição para a janela pop-up
+            if (popupWindow && !popupWindow.closed) {
+                popupWindow.document.body.innerText = transcript;
+            }
         };
 
         // Reinicia a gravação quando detecta silêncio
@@ -52,21 +55,17 @@
             transcriptionElement.textContent = 'Gravando...';
         };
 
-        pipButton.onclick = async () => {
-            if (document.pictureInPictureElement) {
-                document.exitPictureInPicture();
-            } else {
-                try {
-                    // Configura uma MediaStream em branco e entra no modo PiP
-                    pipVideo.srcObject = new MediaStream();
-                    await pipVideo.requestPictureInPicture();
-                    
-                    // Exibir a transcrição como legendas
-                    pipVideo.textTracks[0].mode = "showing"; // Ativa a legenda
-                } catch (error) {
-                    console.error("Erro ao ativar o modo Picture-in-Picture:", error);
-                }
-            }
+        // Abre a janela pop-up para exibir a legenda
+        openPopupButton.onclick = () => {
+            popupWindow = window.open(
+                '',
+                'LegendaFlutuante',
+                'width=400,height=200,resizable,scrollbars'
+            );
+            popupWindow.document.write('<title>Legenda Flutuante</title>');
+            popupWindow.document.body.style.fontSize = '20px';
+            popupWindow.document.body.style.padding = '10px';
+            popupWindow.document.body.innerText = 'A legenda aparecerá aqui...';
         };
     </script>
 </body>
