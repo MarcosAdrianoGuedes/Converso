@@ -43,3 +43,18 @@ body{
     font-size: 20px;
     margin-bottom: 10px;
 }
+
+h1{
+    font-size: 50px;
+    color: var(--AzulEscuro);
+    margin: 20px;
+}
+
+#start{
+    padding: 12px 20px;
+    background-color: var(--AzulClaro);
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--AzulBranco);
+}
