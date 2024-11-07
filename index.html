@@ -3,70 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transcrição em Tempo Real</title>
+    <link rel="shortcut icon" href="assets/images/Icon logo azul 02 (1).png" type="image/x-icon">
+    <title>CONVERSO</title>
 </head>
 <body>
-    <h1>Transcrição em Tempo Real</h1>
+    <h1>CONVERSO</h1>
     <button id="start">Iniciar Gravação</button>
-    <button id="openPopup">Abrir Legenda em Janela Flutuante</button>
-    <p id="transcription">Transcrição aparecerá aqui...</p>
+    <p id="transcription"></p>
 
-    <script>
-        const startButton = document.getElementById('start');
-        const openPopupButton = document.getElementById('openPopup');
-        const transcriptionElement = document.getElementById('transcription');
-        let popupWindow;
+    <script src="scripts.js"></script>
 
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'pt-BR';
-        recognition.interimResults = true;
-        recognition.continuous = true;
-
-        recognition.onresult = (event) => {
-            let transcript = '';
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                transcript += event.results[i][0].transcript;
-            }
-            transcriptionElement.textContent = transcript;
-
-            // Envia a transcrição para a janela pop-up
-            if (popupWindow && !popupWindow.closed) {
-                popupWindow.document.body.innerText = transcript;
-            }
-        };
-
-        // Reinicia a gravação quando detecta silêncio
-        recognition.onspeechend = () => {
-            recognition.stop();
-            recognition.start();
-        };
-
-        // Tratamento de erros
-        recognition.onerror = (event) => {
-            if (event.error === 'no-speech' || event.error === 'network') {
-                recognition.stop();
-                recognition.start();
-            }
-        };
-
-        // Iniciar reconhecimento de voz
-        startButton.onclick = () => {
-            recognition.start();
-            transcriptionElement.textContent = 'Gravando...';
-        };
-
-        // Abre a janela pop-up para exibir a legenda
-        openPopupButton.onclick = () => {
-            popupWindow = window.open(
-                '',
-                'LegendaFlutuante',
-                'width=400,height=200,resizable,scrollbars'
-            );
-            popupWindow.document.write('<title>Legenda Flutuante</title>');
-            popupWindow.document.body.style.fontSize = '20px';
-            popupWindow.document.body.style.padding = '10px';
-            popupWindow.document.body.innerText = 'A legenda aparecerá aqui...';
-        };
-    </script>
 </body>
 </html>
