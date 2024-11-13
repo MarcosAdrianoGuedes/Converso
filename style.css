@@ -11,26 +11,94 @@
     --AzulCiano: #9CCDDB;
     --AzulBranco: #D0D7E1;
     --Vermelho: #940404;
+    --Dark: #000000;
+    --light:#fff;
+    
 }
 
 body{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    margin: 0;
-    background-color: var(--AzulCiano);
-    color: var(--AzulBranco);
-    
    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    height: 100vh;
+    margin: 0.5rem;
 
-    min-height: 100vh;
+    color: var(--dark);
+    transition: background-color 0.3s, color 0.3s;
+
+ 
+}
+
+
+.toggle-switch {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    --light: #d8dbe0;
+    --dark: #28292c;
+    --link: rgb(27, 129, 112);
+    --link-hover: rgb(24, 94, 82);
+}
+  
+.switch-label {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-color: var(--Dark);
+    border-radius: 25px;
+    cursor: pointer;
+    border: 3px solid var(--Dark);
+}
+  
+.checkbox {
+    position: absolute;
+    display: none;
+}
+  
+.slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+  
+.checkbox:checked ~ .slider {
+    background-color: var(--light);
+}
+  
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    -webkit-box-shadow: inset 12px -4px 0px 0px var(--light);
+    box-shadow: inset 12px -4px 0px 0px var(--light);
+    background-color: var(--Dark);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+  
+.checkbox:checked ~ .slider::before {
+    -webkit-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    transform: translateX(50px);
+    background-color: var(--Dark);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+  
+
+.logo{
+    width: 20rem;
+    margin-bottom: 5rem;
 }
 
 .voice_to_text{
-
+    margin: 2rem;
     text-align: center;
 }
 
@@ -41,20 +109,66 @@ body{
     resize: none;
     padding: 10px;
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+
 }
 
-h1{
-    font-size: 50px;
-    color: var(--AzulEscuro);
-    margin: 20px;
-}
 
-#start{
-    padding: 12px 20px;
-    background-color: var(--AzulClaro);
-    border: 0;
-    border-radius: 5px;
+.button {
+    height: 50px;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+  
+.button:hover {
+    box-shadow: .5px .5px 150px var(--Dark);
+}
+  
+.type1::after {
+    content: "Stop";
+    height: 50px;
+    width: 150px;
+    background-color: var(--Vermelho);
     color: var(--AzulBranco);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translateY(50px);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+}
+  
+.type1::before {
+    content: "Gravar";
+    height: 50px;
+    width: 150px;
+    background-color: var(--AzulClaro);
+    color: var(--light);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translateY(0px) scale(1.2);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+}
+  
+.type1:hover::after {
+    transform: translateY(0) scale(1.2);
+}
+  
+.type1:hover::before {
+    transform: translateY(-50px) scale(0) rotate(120deg);
 }

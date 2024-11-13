@@ -7,11 +7,20 @@
     <link rel="stylesheet" href="style.css">
     <title>CONVERSO</title>
 </head>
-<body>
+<body class="dark-theme">
+
+    <div class="toggle-switch" >
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox">
+          <span class="slider"></span>
+        </label>
+    </div> 
+
+
     <div class="voice_to_text">
-        <h1>CONVERSO</h1>
+        <img class="logo" src="assets/images/logo_horizontal_azul_01.svg" alt="logo do aplicativo" >
         <textarea id="transcription"></textarea>
-        <button id="start">Iniciar Gravação</button>
+        <button class="button type1" id="start"></button>
     </div>
 
     <script src="scripts.js"></script>

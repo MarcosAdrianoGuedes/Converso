@@ -32,3 +32,5 @@ startButton.onclick = () => {
     recognition.start();
     transcriptionElement.textContent = 'Gravando...';
 };
+
+
