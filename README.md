@@ -44,7 +44,7 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início, co
 * **Patrick** - *FrontEnd* - [nome_do_dev](https://github.com/link_do_Perfil)
 * **Neiva** - *Suporte / HTML* - [nome_do_dev](https://github.com/link_do_Perfil)
 * **Kaio Barros** - *Design - ui/ux* - [nome_do_dev](https://github.com/link_do_Perfil)
-* **Joyce** - *Função realizada* - [nome_do_dev](https://github.com/link_do_Perfil)
+* **Joyce** - *Suporte / QA* - [nome_do_dev](https://github.com/link_do_Perfil)
  
 ## 📄 Licença
 
