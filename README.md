@@ -1,4 +1,4 @@
-![Logo do projeto](https://imgur.com/a/bsKcgqR)
+![header](https://github.com/user-attachments/assets/c492195b-5494-4692-9ae1-9efbfb771782)
 
 # CONVERSO
 Aplicação web e mobile que transcreve falas em tempo real, facilitando a comunicação para deficientes auditivos.
